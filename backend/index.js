@@ -4,7 +4,7 @@ import { getCards, editCard, deleteCard, createCard, getCard } from "./db.js";
 const app = express();
 const PORT = 8080;
 app.use(express.json());
-app.use("/*", cors());
+app.use(cors());
 
 
 app.get("/",(req,res) =>{
