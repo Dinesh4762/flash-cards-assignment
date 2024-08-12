@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-VariableFont.ttf");
+}
+
+:root {
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+  
+  font-family: Inter;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
