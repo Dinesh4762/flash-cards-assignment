@@ -2,46 +2,51 @@ import express from "express";
 import cors from "cors";
 import { getCards, editCard, deleteCard, createCard, getCard } from "./db.js";
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://flash-cards-assignment.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 const PORT = 8080;
 app.use(express.json());
 
-
-app.get("/",(req,res) =>{
-    res.send("working");
-})
+app.get("/", (req, res) => {
+  res.send("working");
+});
 app.get("/cards", async (req, res) => {
   const cards = await getCards();
   res.json({ cards });
 });
-app.get("/:id",async (req,res)=>{
-    const id = req.params.id;
-    const card = await getCard(id);
-    res.json({card});
-})
+app.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  const card = await getCard(id);
+  res.json({ card });
+});
 app.put("/edit/:id", async (req, res) => {
   const id = req.params.id;
   const { question, answer } = req.body;
   const isUpdated = await editCard(id, question, answer);
-  res.json({success: isUpdated});
+  res.json({ success: isUpdated });
 });
 
 app.post("/", async (req, res) => {
   const { question, answer } = req.body;
   const id = await createCard(question, answer);
-  res.json({id});
+  res.json({ id });
 });
 
 app.delete("/:id", async (req, res) => {
   const id = req.params.id;
   const isDeleted = await deleteCard(id);
-  res.status(201).json({success: isDeleted});
+  res.status(201).json({ success: isDeleted });
 });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broken");
 });
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log(`server started on PORT ${PORT}`);
 });
