@@ -1,1 +1,1 @@
-export const BASE_URL = "https://flash-cards-assignment.vercel.app";
+export const BASE_URL = "https://flash-cards-backend-plum.vercel.app";
