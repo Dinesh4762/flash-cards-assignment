@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { getCards, editCard, deleteCard, createCard, getCard } from "./db.js";
 const app = express();
+// app.use(cors());
 app.use(
   cors({
     origin: "https://flash-cards-assignment.vercel.app",

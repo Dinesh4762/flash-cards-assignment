@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import Thala from "../assets/thala.jpg";
 
 const Flashcard = ({ question, answer }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  useEffect(()=>{
+    return ()=>{
+      setIsFlipped(false);
+      console.log("ran")
+    }
+  },[question,answer])
+
   const handleCardClick = () => {
-    setIsFlipped(!isFlipped); // Toggle the flipped state
+    setIsFlipped(!isFlipped);
   };
 
   return (
