@@ -14,6 +14,7 @@ const Home = () => {
       setcontent(cards[0]);
     }
   }, [cards]);
+  
   if (loading) {
     return (
       <FlashContainer>
@@ -23,7 +24,7 @@ const Home = () => {
       </FlashContainer>
     );
   }
-  if (cards.length == 0) {
+  if (cards.length === 0) {
     return <div>No flashcards available at the moment</div>;
   }
   return (

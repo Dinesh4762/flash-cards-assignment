@@ -24,14 +24,19 @@ export async function getCard(id) {
 }
 
 export async function createCard(question, answer) {
-  const [res] = await pool.query(
-    `INSERT into
+  try {
+    const [res] = await pool.query(
+      `INSERT into
         cards (question,answer)
         VALUES (?, ?)`,
-    [question, answer]
-  );
-  console.log(res.insertId);
-  return res.insertId;
+      [question, answer]
+    );
+    console.log(res.insertId);
+    return res.insertId;
+  } catch (error) {
+    console.log(error)
+    return false
+  }
 }
 
 export async function editCard(id, ques, ans) {

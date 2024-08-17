@@ -9,7 +9,7 @@ export const useCards = () => {
   useEffect(() => {
     try {
       axios.get(`${BASE_URL}/cards`).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setCards(res.data.cards);
         setLoading(false);
       });
@@ -29,9 +29,9 @@ export const useCard = (id) => {
   useEffect(() => {
     try {
       axios.get(`${BASE_URL}/${id}`).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setLoading(false);
-        setCard(res.data.card[0]);
+        setCard(res.data.card);
       });
     } catch (error) {
       toast.error("Something's wrong!");
