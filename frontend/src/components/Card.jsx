@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../config";
 import { toast } from "sonner";
 import axios from "axios";
 
@@ -10,7 +9,7 @@ const Card = ({ card }) => {
   };
   const deleteCardHandler = () => {
     console.log(1);
-    axios.delete(`${BASE_URL}/${card.id}`).then((res) => {
+    axios.delete(`${import.meta.env.VITE_URL}/${card.id}`).then((res) => {
       if (res.data.success) {
         toast.success("Card deleted!");
         window.location.reload();

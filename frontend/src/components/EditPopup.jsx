@@ -2,7 +2,6 @@ import axios from "axios";
 import { toast } from "sonner";
 import InputDiv from "./InputDiv";
 import Backdrop from "./Backdrop";
-import { BASE_URL } from "../../config";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCard } from "../hooks/cards";
 import { Loader } from "./Loader";
@@ -20,7 +19,7 @@ const EditPopup = () => {
       return;
     }
     axios
-      .put(`${BASE_URL}/edit/${id}`, card)
+      .put(`${import.meta.env.VITE_URL}/edit/${id}`, card)
       .then((res) => {
         if (res.data.success) {
           toast.success("updated successfully");

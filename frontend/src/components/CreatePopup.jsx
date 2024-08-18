@@ -3,7 +3,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 import InputDiv from "./InputDiv";
 import Backdrop from "./Backdrop";
-import { BASE_URL } from "../../config";
 
 const CreatePopup = ({ setPopupVisible }) => {
   const [ques, setQues] = useState("");
@@ -16,7 +15,7 @@ const CreatePopup = ({ setPopupVisible }) => {
       return;
     }
     axios
-      .post(`${BASE_URL}`, { question: ques, answer: ans })
+      .post(`${import.meta.env.VITE_URL}`, { question: ques, answer: ans })
       .then((res) => {
         toast.success("created");
         setPopupVisible(false);
