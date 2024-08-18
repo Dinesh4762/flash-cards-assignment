@@ -13,6 +13,7 @@ const pool = mysql
   .promise();
 
 export async function getCards() {
+  console.log("cache miss");
   const [res] = await pool.query("SELECT * FROM cards");
   console.log(res);
   return res;
