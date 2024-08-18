@@ -1,2 +1,4 @@
-const local = "http://localhost:8080";
-export const BASE_URL = local;
+import {config} from "dotenv";
+config();
+
+export const BASE_URL = process.env.BASE_URL;
